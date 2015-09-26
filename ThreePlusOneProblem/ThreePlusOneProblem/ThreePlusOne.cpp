@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 using namespace std;
 
@@ -23,7 +24,10 @@ int cycleLength(long long n) {
 
 int main() {
 	int n;
+	unsigned int time;
 	cin >> n;
+	time = clock();
 	cout << cycleLength(n) << endl;
+	cout << clock() - time << " miliseconds to calculate" << endl;
 	return 0;
 }
