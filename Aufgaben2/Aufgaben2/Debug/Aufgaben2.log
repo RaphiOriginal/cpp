@@ -1,0 +1,15 @@
+﻿Build started 01.10.2015 12:56:20.
+Project "C:\Users\Raphael Brunner\documents\cpp\cpp\Aufgaben2\Aufgaben2\Aufgaben2.vcxproj" on node 2 (Build target(s)).
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Aufgaben2.cpp
+  Aufgaben2.cpp
+c:\users\raphael brunner\documents\cpp\cpp\aufgaben2\aufgaben2\aufgaben2.cpp(56): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\raphael brunner\documents\cpp\cpp\aufgaben2\aufgaben2\aufgaben2.cpp(47): warning C4172: returning address of local variable or temporary: ghostInTheMachine
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Raphael Brunner\documents\cpp\cpp\Aufgaben2\Debug\Aufgaben2.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Raphael Brunner\documents\cpp\cpp\Aufgaben2\Debug\Aufgaben2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Raphael Brunner\documents\cpp\cpp\Aufgaben2\Debug\Aufgaben2.lib" /MACHINE:X86 Debug\Aufgaben2.obj
+  Aufgaben2.vcxproj -> C:\Users\Raphael Brunner\documents\cpp\cpp\Aufgaben2\Debug\Aufgaben2.exe
+Done Building Project "C:\Users\Raphael Brunner\documents\cpp\cpp\Aufgaben2\Aufgaben2\Aufgaben2.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.24
