@@ -1,0 +1,18 @@
+﻿Build started 08.10.2015 17:24:35.
+Project "C:\Users\Raphael Brunner\Documents\cpp\cpp\Freeway\Freeway.vcxproj" on node 2 (ClCompile target(s)).
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\Freeway.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Cars.cpp
+  Cars.cpp
+c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(1636): error C2664: 'Car::Car(Car &&)': cannot convert argument 1 from 'Car *' to 'const Car &'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(1636): note: Reason: cannot convert from 'Car *' to 'const Car'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(1636): note: No constructor could take the source type, or constructor overload resolution was ambiguous
+  c:\users\raphael brunner\documents\cpp\cpp\freeway\parking.h(19): note: see reference to function template instantiation 'std::unique_ptr<Car,std::default_delete<_Ty>> std::make_unique<Car,Car*>(Car *&&)' being compiled
+          with
+          [
+              _Ty=Car
+          ]
+Done Building Project "C:\Users\Raphael Brunner\Documents\cpp\cpp\Freeway\Freeway.vcxproj" (ClCompile target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.53
