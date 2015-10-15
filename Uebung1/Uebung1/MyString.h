@@ -9,7 +9,7 @@ class String final {
 	std::shared_ptr<char> m_string;
 
 public:
-	String() : m_len(0) { }
+	String() : m_len(0), m_start(0) { }
 	String(const String &string)
 		: m_string(string.m_string), m_len(string.m_len), m_start(string.m_start) {
 		std::cout << "copyconstructor used" << std::endl;
@@ -19,10 +19,14 @@ public:
 		while (string[count] != '\0') {
 			++count;
 		}
+		m_start = 0;
 		m_len = count;
 		std::unique_ptr<char[]> temp(new char{ *string });
 		m_string = move(temp);
-		std::cout << *string << std::endl;
+		for (size_t i = m_start; i < m_start + m_len; i++) {
+			std::cout << m_string.get()[i];
+		}
+		std::cout << std::endl;
 	}
 	~String() {
 		std::cout << "deconstructor used" << std::endl;

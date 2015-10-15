@@ -1,0 +1,10 @@
+﻿Build started 15.10.2015 10:54:54.
+Project "C:\Users\Raphael Brunner\documents\cpp\cpp\Uebung1\UnitTest\UnitTest.vcxproj" on node 2 (ClCompile target(s)).
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\UnitTest\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\UnitTest.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /FC /errorReport:prompt unittest1.cpp
+  unittest1.cpp
+Done Building Project "C:\Users\Raphael Brunner\documents\cpp\cpp\Uebung1\UnitTest\UnitTest.vcxproj" (ClCompile target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.21
