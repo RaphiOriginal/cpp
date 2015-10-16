@@ -28,7 +28,7 @@ String String::concat(char c) const {
 	temp[m_len] = c;
 	temp[m_len + 1] = '\0';
 	return String(temp);
-}
+}/*
 String String::concat(const String& s)const {
 	char* temp = new char[m_len + s.m_len];
 	for (size_t i = 0; i < m_len; i++) {
@@ -39,6 +39,20 @@ String String::concat(const String& s)const {
 	}
 	temp[m_len + s.m_len] = '\0';
 	return String(temp);
+}*/
+String String::concat(const String& s) const {
+	String ns = String();
+	ns.m_len = s.m_len + m_len;
+	ns.m_start = 0;
+	std::unique_ptr<char[]> temp(new char[m_len + s.m_len]);
+	for (size_t i = 0; i < m_len; i++) {
+		temp[i] = m_string.get()[m_start + i];
+	}
+	for (size_t i = 0; i <s.m_len; i++) {
+		temp[m_len + i] = s.m_string.get()[m_start + i];
+	}
+	ns.m_string = move(temp);
+	return ns;
 }
 size_t String::length() const {
 	return m_len;

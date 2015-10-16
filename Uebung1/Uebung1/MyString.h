@@ -9,10 +9,12 @@ class String final {
 	std::shared_ptr<char> m_string;
 
 public:
-	String() : m_len(0), m_start(0) { }
+	String() : m_len(0), m_start(0) {
+		std::cout << "standart-constructor" << std::endl;
+	}
 	String(const String &string)
 		: m_string(string.m_string), m_len(string.m_len), m_start(string.m_start) {
-		std::cout << "copyconstructor used" << std::endl;
+		std::cout << "copy-constructor used: " << string << std::endl;
 	}
 	String(const char* string) : m_start(0), m_len(0) {
 		while (string[m_len] != '\0') {
@@ -23,14 +25,22 @@ public:
 			temp[i] = string[i];
 		}
 		m_string = move(temp);
-		//for debugging
-		for (size_t i = 0; i < m_len; i++) {
-			std::cout << m_string.get()[i];
-		}
-		std::cout << std::endl;
+		std::cout << "convert-constructor: " << string << std::endl;
+	}
+	String(String&& s) : m_len(s.m_len), m_start(s.m_start), m_string(s.m_string) {
+		s.m_len = 0;
+		s.m_start = 0;
+		s.m_string = nullptr;
+		std::cout << "verschiebekonstruktor: " << *this << std::endl;
+	}
+	String& operator=(String&& s) {
+		m_len = s.m_len; s.m_len = 0;
+		m_start = s.m_start; s.m_start = 0;
+		m_string = s.m_string; s.m_string = nullptr;
+		return *this;
 	}
 	~String() {
-		std::cout << "deconstructor used: " << this << std::endl;
+		std::cout << "destructor used: " << *this << std::endl;
 	}
 	//Instanz-Methoden
 	char charAt(size_t index) const;

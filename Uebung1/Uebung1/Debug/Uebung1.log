@@ -1,20 +1,14 @@
-﻿Build started 16.10.2015 16:43:19.
-Project "C:\Users\Raphael Brunner\documents\cpp\cpp\Uebung1\Uebung1\Uebung1.vcxproj" on node 2 (Rebuild target(s)).
+﻿Build started 16.10.2015 21:45:51.
+Project "C:\Users\Raphael Brunner\documents\cpp\cpp\Uebung1\Uebung1\Uebung1.vcxproj" on node 2 (Build target(s)).
 ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D CODE_ANALYSIS /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze /analyze:plugin"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\\bin\localespc.dll" /errorReport:prompt   /analyze:quiet main.cpp MyString.cpp
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt MyString.cpp
   MyString.cpp
-  main.cpp
-  Running Code Analysis for C/C++...
-  Generating Code...
 Link:
   C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Raphael Brunner\documents\cpp\cpp\Uebung1\Debug\Uebung1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Raphael Brunner\documents\cpp\cpp\Uebung1\Debug\Uebung1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Raphael Brunner\documents\cpp\cpp\Uebung1\Debug\Uebung1.lib" /MACHINE:X86 Debug\main.obj
   Debug\MyString.obj
   Uebung1.vcxproj -> C:\Users\Raphael Brunner\documents\cpp\cpp\Uebung1\Debug\Uebung1.exe
-c:\users\raphael brunner\documents\cpp\cpp\uebung1\uebung1\mystring.cpp(29): warning C6386: Buffer overrun while writing to 'temp':  the writable size is '(m_len+1)*1' bytes, but '2' bytes might be written.
-c:\users\raphael brunner\documents\cpp\cpp\uebung1\uebung1\mystring.cpp(40): warning C6386: Buffer overrun while writing to 'temp':  the writable size is '(m_len+s.m_len)*1' bytes, but '2' bytes might be written.
-c:\users\raphael brunner\documents\cpp\cpp\uebung1\uebung1\mystring.cpp(117): warning C6386: Buffer overrun while writing to 'result':  the writable size is 'size*1' bytes, but '2' bytes might be written.
-Done Building Project "C:\Users\Raphael Brunner\documents\cpp\cpp\Uebung1\Uebung1\Uebung1.vcxproj" (Rebuild target(s)).
+Done Building Project "C:\Users\Raphael Brunner\documents\cpp\cpp\Uebung1\Uebung1\Uebung1.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:05.47
+Time Elapsed 00:00:01.31
