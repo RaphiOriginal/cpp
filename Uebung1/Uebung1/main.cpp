@@ -24,12 +24,14 @@ int main() {
 	cout << "concat1: " << String("abc").concat('d') << endl;
 	cout << "concat1: " << String("abc").concat("abc") << endl;
 
-	//Move-Semantik
-	cout << endl;
-	cout << endl;
-	cout << "Move-Semantik" << endl;
-	String s = String("ab").concat("cd").concat("ef");
-	cout << s << endl;
+	{
+		//Move-Semantik
+		cout << endl;
+		cout << endl;
+		cout << "Move-Semantik" << endl;
+		String s = String("ab").concat("cd").concat("ef");
+		cout << s << endl;
+	}
 	cout << endl;
 	cout << endl;
 

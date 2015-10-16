@@ -14,7 +14,7 @@ public:
 	}
 	String(const String &string)
 		: m_string(string.m_string), m_len(string.m_len), m_start(string.m_start) {
-		std::cout << "copy-constructor used: " << string << std::endl;
+		std::cout << "copy-constructor: " << string << std::endl;
 	}
 	String(const char* string) : m_start(0), m_len(0) {
 		while (string[m_len] != '\0') {
@@ -40,7 +40,7 @@ public:
 		return *this;
 	}
 	~String() {
-		std::cout << "destructor used: " << *this << std::endl;
+		std::cout << "destructor: " << *this << std::endl;
 	}
 	//Instanz-Methoden
 	char charAt(size_t index) const;
