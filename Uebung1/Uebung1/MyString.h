@@ -14,22 +14,23 @@ public:
 		: m_string(string.m_string), m_len(string.m_len), m_start(string.m_start) {
 		std::cout << "copyconstructor used" << std::endl;
 	}
-	String(const char* string) {
-		size_t count = 0;
-		while (string[count] != '\0') {
-			++count;
+	String(const char* string) : m_start(0), m_len(0) {
+		while (string[m_len] != '\0') {
+			++m_len;
 		}
-		m_start = 0;
-		m_len = count;
-		std::unique_ptr<char[]> temp(new char{ *string });
+		std::unique_ptr<char[]> temp(new char[m_len]);
+		for (size_t i = 0; i < m_len; i++) {
+			temp[i] = string[i];
+		}
 		m_string = move(temp);
-		for (size_t i = m_start; i < m_start + m_len; i++) {
+		//for debugging
+		for (size_t i = 0; i < m_len; i++) {
 			std::cout << m_string.get()[i];
 		}
 		std::cout << std::endl;
 	}
 	~String() {
-		std::cout << "deconstructor used" << std::endl;
+		std::cout << "deconstructor used: " << this << std::endl;
 	}
 	//Instanz-Methoden
 	char charAt(size_t index) const;
