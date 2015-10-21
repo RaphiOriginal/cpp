@@ -1,4 +1,10 @@
 #Uebung 1
+
+###Code-Coverage
+Bevor Abgabe  
+![Screenshot](Bildschirmfoto 2015-10-21 um 12.31.50.png "Screenshot")
+
+
 ###Zuweisungsoperator
 Um zu verhindern, dass der Zuweisungsoperator einer Klasse verwendet werden kann, kann man den automatisch generierten Operator löschen:
 
