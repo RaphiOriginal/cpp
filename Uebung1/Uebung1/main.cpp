@@ -23,6 +23,7 @@ int main() {
 	cout << "valueof2: " << String::valueOf(-123) << endl;
 	cout << "intMaxValue: " << numeric_limits<int>::max() << endl;
 	cout << "valueofMAX: " << String::valueOf(std::numeric_limits<int>::max()) << endl;
+	cout << "intMinValue: " << numeric_limits<int>::min() << endl;
 	cout << "valueofMIN: " << String::valueOf(std::numeric_limits<int>::min()) << endl;
 	cout << "concat1: " << String("abc").concat('d') << endl;
 	cout << "concat1: " << String("abc").concat("abc") << endl;

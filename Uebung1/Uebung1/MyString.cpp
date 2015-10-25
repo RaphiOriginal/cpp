@@ -90,16 +90,17 @@ String String::substring(size_t beg, size_t end) const {
 }
 String String::valueOf(int i)
 {
-	int value = i;
+	long long value = i;
 	int factor = 10;
 	size_t size = 1;
 	if (i < 0) {
 		value = value * -1;
 		size++;
 	}
-	while (value / factor > 0) {
+	long long copy = value;
+	while (copy / factor > 0) {
 		size++;
-		factor = factor * 10;
+		copy = copy / factor;
 	}
 	factor = 10;
 	size_t index = size - 1;
