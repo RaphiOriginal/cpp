@@ -28,11 +28,40 @@ namespace UnitTest
 			Assert::IsTrue(String("abc").charAt(0) == 'a');
 			Assert::IsTrue(String("abc").charAt(1) == 'b');
 			Assert::IsTrue(String("abc").charAt(2) == 'c');
+			try {
+				String("abc").charAt(-1);
+				Assert::Fail();
+			}
+			catch (std::out_of_range ex) {
+				//every thing is fine
+			}
+			catch (...) {
+				Assert::Fail();
+			}
+			try {
+				String("abc").charAt(3);
+				Assert::Fail();
+			}
+			catch (std::out_of_range ex) {
+				//every thing is fine
+			}
+			catch (...) {
+				Assert::Fail();
+			}
 		}
 		TEST_METHOD(CompareTo) {
 			Assert::IsTrue(String("abc").compareTo(String("abc")) == 0);
 			Assert::IsTrue(String("abc").compareTo(String("bbc")) == -1);
 			Assert::IsTrue(String("bbc").compareTo(String("abc")) == 1);
+			Assert::IsTrue(String("ab").compareTo(String("abc")) == -1);
+			Assert::IsTrue(String("abc").compareTo(String("ab")) == 1);
+		}
+		TEST_METHOD(Equals) {
+			Assert::IsTrue(String("abc") == String("abc"));
+			Assert::IsFalse(String("abc") == String("bbc"));
+			Assert::IsFalse(String("bbc") == String("abc"));
+			Assert::IsFalse(String("ab") == String("abc"));
+			Assert::IsFalse(String("abc") == String("ab"));
 		}
 		TEST_METHOD(Concat) {
 			Assert::IsTrue(String("abc").concat('d').compareTo(String("abcd")) == 0);
@@ -40,6 +69,9 @@ namespace UnitTest
 		}
 		TEST_METHOD(Substring) {
 			Assert::IsTrue(String("aabcc").substring(1, 3).compareTo(String("abc")) == 0);
+			Assert::IsTrue(String("aabcc").substring(1, 1) == String(""));
+			Assert::IsTrue(String("aabcc").substring(5, 7) == String(""));
+
 		}
 		TEST_METHOD(ToCString) {
 			Assert::AreEqual(String("abc").toCString().get(), "abc\0");

@@ -27,10 +27,9 @@ public:
 		m_string = move(temp);
 		std::cout << "convert-constructor: " << string << std::endl;
 	}
-	String(String&& s) : m_len(s.m_len), m_start(s.m_start), m_string(s.m_string) {
+	String(String&& s) : m_len(s.m_len), m_start(s.m_start), m_string(move(s.m_string)) {
 		s.m_len = 0;
 		s.m_start = 0;
-		s.m_string = nullptr;
 		std::cout << "verschiebekonstruktor: " << *this << std::endl;
 	}
 	String& operator=(String&& s) {
@@ -47,9 +46,19 @@ public:
 	int compareTo(const String& s) const;
 	String concat(char c) const;
 	String concat(const String& s)const;
+	String concat(String&& s);
+
 	size_t length() const;
 	String substring(size_t beg, size_t end) const;
-	std::unique_ptr<char[]> toCString() const;
+	std::unique_ptr<char[]> toCString() const {
+		std::unique_ptr<char[]> r = std::unique_ptr<char[]>(new char[m_len + 1]);
+		const char * const tc = m_string.get();
+
+		memcpy(r.get(), tc + m_start, m_len);
+		r[m_len] = '\0';
+
+		return move(r);
+	}
 	
 	bool operator==(const String& s) const { return compareTo(s) == 0; }
 
