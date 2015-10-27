@@ -26,13 +26,16 @@ int String::compareTo(const String& s) const {
 	return 0;
 }
 String String::concat(char c) const {
-	char* temp = new char[m_len + 1];
+	String ns;
+	ns.m_start = 0;
+	ns.m_len = m_len + 1;
+	std::unique_ptr<char[]> temp(new char[m_len + 1]);
 	for (size_t i = 0; i < m_len; i++) {
 		temp[i] = m_string.get()[m_start + i];
 	}
 	temp[m_len] = c;
-	temp[m_len + 1] = '\0';
-	return String(temp);
+	ns.m_string = move(temp);
+	return ns;
 }
 /*
 //alte Variante vor Move-Semantik
@@ -82,6 +85,7 @@ size_t String::length() const {
 }
 String String::substring(size_t beg, size_t end) const {
 	if (beg >= m_len || end <= beg) return String("");
+	if (end > m_len) throw std::out_of_range("end index is out of range!");
 	String s;
 	s.m_start = m_start + beg;
 	s.m_len = end - beg + 1;
@@ -90,8 +94,10 @@ String String::substring(size_t beg, size_t end) const {
 }
 String String::valueOf(int i)
 {
+	String res;
+	res.m_start = 0;
 	long long value = i;
-	int factor = 10;
+	const int factor = 10;
 	size_t size = 1;
 	if (i < 0) {
 		value = value * -1;
@@ -102,9 +108,10 @@ String String::valueOf(int i)
 		size++;
 		copy = copy / factor;
 	}
-	factor = 10;
+	res.m_len = size;
 	size_t index = size - 1;
-	char* result = new char[size];
+	std::unique_ptr<char[]> result(new char[size]);
+	result[index] = '0';
 	if (i < 0) result[0] = '-';
 	while (value % factor != 0) {
 		int check = value % factor;
@@ -112,6 +119,6 @@ String String::valueOf(int i)
 		index--;
 		value = value / factor;
 	}
-	result[size] = '\0';
-	return String(result);
+	res.m_string = move(result);
+	return res;
 }
