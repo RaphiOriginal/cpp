@@ -23,6 +23,9 @@ int main() {
 	cout << "valueof2: " << String::valueOf(-123) << endl;
 	cout << "valueofMAX: " << String::valueOf(std::numeric_limits<int>::max()) << endl;
 	cout << "valueofMIN: " << String::valueOf(std::numeric_limits<int>::min()) << endl;
+	cout << String::valueOf(0) << endl;
+	cout << String::valueOf(10) << endl;
+	cout << String::valueOf(999) << endl;
 	cout << "valueof0: " << String::valueOf(0) << endl;
 	cout << "valueof-1: " << String::valueOf(-1) << endl;
 	cout << "concat1: " << String("abc").concat('d') << endl;

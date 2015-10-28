@@ -84,8 +84,8 @@ size_t String::length() const {
 	return m_len;
 }
 String String::substring(size_t beg, size_t end) const {
-	if (beg >= m_len || end <= beg) return String("");
-	if (end > m_len) throw std::out_of_range("end index is out of range!");
+	if (beg >= m_len || end < beg) return String("");
+	if (end > m_len) end = m_len;
 	String s;
 	s.m_start = m_start + beg;
 	s.m_len = end - beg + 1;
@@ -100,7 +100,7 @@ String String::valueOf(int i)
 	const int factor = 10;
 	size_t size = 1;
 	if (i < 0) {
-		value = value * -1;
+		value = -value;
 		size++;
 	}
 	long long copy = value;
@@ -113,7 +113,7 @@ String String::valueOf(int i)
 	std::unique_ptr<char[]> result(new char[size]);
 	result[index] = '0';
 	if (i < 0) result[0] = '-';
-	while (value % factor != 0) {
+	while (value != 0) {
 		int check = value % factor;
 		result[index] = '0' + check;
 		index--;

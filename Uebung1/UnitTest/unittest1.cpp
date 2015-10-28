@@ -69,9 +69,11 @@ namespace UnitTest
 		}
 		TEST_METHOD(Substring) {
 			Assert::IsTrue(String("aabcc").substring(1, 3).compareTo(String("abc")) == 0);
-			Assert::IsTrue(String("aabcc").substring(1, 1) == String(""));
+			Assert::IsTrue(String("aabcc").substring(1, 1) == String("a"));
 			Assert::IsTrue(String("aabcc").substring(5, 7) == String(""));
-
+			Assert::IsTrue(String("aabcc").substring(1, 3).length() == 3);
+			Assert::IsTrue(String("aabcc").substring(2, 3).length() == 2);
+			Assert::IsTrue(String("aabcc").substring(3, 3).length() == 1);
 		}
 		TEST_METHOD(ToCString) {
 			Assert::AreEqual(String("abc").toCString().get(), "abc\0");
@@ -80,6 +82,9 @@ namespace UnitTest
 			Assert::IsTrue(String::valueOf(1).compareTo(String("1")) == 0);
 			Assert::IsTrue(String::valueOf(2).compareTo(String("1")) == 1);
 			Assert::IsTrue(String::valueOf(-123).compareTo(String("-123")) == 0);
+			Assert::IsTrue(String::valueOf(0) == "0");
+			Assert::IsTrue(String::valueOf(10) == "10");
+			Assert::IsTrue(String::valueOf(999) == "999");
 		}
 	};
 }
