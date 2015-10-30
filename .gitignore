@@ -32,3 +32,4 @@
 
 # Eclipse
 .metadata/
+.recommender/
