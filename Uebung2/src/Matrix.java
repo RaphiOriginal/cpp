@@ -9,7 +9,7 @@ public class Matrix {
 	public final int column;
 	
 	native void multiplyC(double[] a, double[] b, double[] r, int i, int j, int k);
-	native void powerC(double[] a, double[] b, double[] r, int i, int j, int k);
+	native void powerC(double[] a, double[] r, int i, int j, int k);
 	
 	public Matrix(int _row, int _column){
 		row = _row;
