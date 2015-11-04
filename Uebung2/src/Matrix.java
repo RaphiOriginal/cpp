@@ -8,7 +8,7 @@ public class Matrix {
 	public final int row;
 	public final int column;
 	
-	native void multiplyC(double[] a, double[] b, double[] r, int i, int j, int k);
+	native double[] multiplyC(double[] a, double[] b, double[] r, int i, int j, int k);
 	
 	public Matrix(int _row, int _column){
 		row = _row;
@@ -31,7 +31,7 @@ public class Matrix {
 		Matrix result = new Matrix(this.row, m.column, 0);
 		for(int i = 0; i < result.matrix.length; i++){
 			for(int j = 0; j < this.row; j++){
-				result.matrix[i] += this.matrix[j*this.row + i] * m.matrix[i*m.column+j];
+				result.matrix[i] += this.matrix[j*this.row + (i % this.row)] * m.matrix[i % m.column + j];
 			}
 		}
 		return result;
