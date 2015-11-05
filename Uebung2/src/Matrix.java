@@ -9,7 +9,7 @@ public class Matrix {
 	public final int column;
 	
 	native void multiplyC(double[] a, double[] b, double[] r, int i, int j, int k);
-	native void powerC(double[] a, double[] r, int i, int j, int k);
+	native void powerC(double[] a, double[] r, int i, int d);
 	
 	public Matrix(int _row, int _column){
 		row = _row;
@@ -43,10 +43,13 @@ public class Matrix {
 	}
 	
 	Matrix power(int k){
+		if(this.row != this.column) return null;
 		Matrix result = new Matrix(this);
+		Matrix temp = new Matrix(this);
 		
 		while(k>1){
-			multiplyCal(this, result);
+			multiplyCal(temp, result);
+			temp = new Matrix(result);
 			k--;
 		}
 		
@@ -72,6 +75,13 @@ public class Matrix {
 		if(this.column != m.row) return null;
 		Matrix result = new Matrix(this.row, m.column, 0);
 		multiplyC(this.matrix, m.matrix, result.matrix, m.column, this.row, this.column);
+		return result;
+	}
+	
+	Matrix powerNative(int k){
+		if(this.row != this.column) return null;
+		Matrix result = new Matrix(this);
+		powerC(this.matrix, result.matrix, k, this.row);
 		return result;
 	}
 	

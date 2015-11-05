@@ -15,6 +15,14 @@ extern "C" {
 JNIEXPORT void JNICALL Java_Matrix_multiplyC
   (JNIEnv *, jobject, jdoubleArray, jdoubleArray, jdoubleArray, jint, jint, jint);
 
+/*
+ * Class:     Matrix
+ * Method:    powerC
+ * Signature: ([D[DII)V
+ */
+JNIEXPORT void JNICALL Java_Matrix_powerC
+  (JNIEnv *, jobject, jdoubleArray, jdoubleArray, jint, jint);
+
 #ifdef __cplusplus
 }
 #endif

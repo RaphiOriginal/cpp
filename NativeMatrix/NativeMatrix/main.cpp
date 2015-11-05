@@ -1,18 +1,4 @@
 #include "Matrix.h"
-
-JNIEXPORT void JNICALL Java_Matrix_multiplyC
-(JNIEnv *env, jobject, jdoubleArray a, jdoubleArray b, jdoubleArray r, jint mcolumn, jint thisrow, jint thiscolumn) {
-	jdouble *m = env->GetDoubleArrayElements(b, 0);
-	jdouble *thi = env->GetDoubleArrayElements(a, 0);
-	jdouble *result = env->GetDoubleArrayElements(r, 0);
-
-	multiplyCal(m, thi, result, mcolumn, thisrow, thiscolumn);
-
-	env->ReleaseDoubleArrayElements(r, result, 0);
-	env->ReleaseDoubleArrayElements(a, thi, JNI_ABORT);
-	env->ReleaseDoubleArrayElements(b, m, JNI_ABORT);
-}
-
 void multiplyCal(jdouble *m, jdouble *thi, jdouble *result, jint mcolumn, jint thisrow, jint thiscolumn) {
 	for (int i = 0; i < thisrow; i++) {
 		//each column from m
@@ -26,3 +12,41 @@ void multiplyCal(jdouble *m, jdouble *thi, jdouble *result, jint mcolumn, jint t
 		}
 	}
 }
+
+void copy(jdouble* target, jdouble* source, jint size) {
+	for (jint i = 0; i < size; i++) {
+		target[i] = source[i];
+	}
+}
+JNIEXPORT void JNICALL Java_Matrix_multiplyC
+(JNIEnv *env, jobject, jdoubleArray a, jdoubleArray b, jdoubleArray r, jint mcolumn, jint thisrow, jint thiscolumn) {
+	jdouble *m = env->GetDoubleArrayElements(b, 0);
+	jdouble *thi = env->GetDoubleArrayElements(a, 0);
+	jdouble *result = env->GetDoubleArrayElements(r, 0);
+
+	multiplyCal(m, thi, result, mcolumn, thisrow, thiscolumn);
+
+	env->ReleaseDoubleArrayElements(r, result, 0);
+	env->ReleaseDoubleArrayElements(a, thi, JNI_ABORT);
+	env->ReleaseDoubleArrayElements(b, m, JNI_ABORT);
+}
+
+JNIEXPORT void JNICALL Java_Matrix_powerC
+(JNIEnv *env, jobject, jdoubleArray a, jdoubleArray r, jint pow, jint dimension) {
+	jdouble *thi = env->GetDoubleArrayElements(a, 0);
+	jint size = dimension*dimension;
+	jdouble *temp = new jdouble[size];
+	jdouble *result = env->GetDoubleArrayElements(r, 0);
+
+	copy(temp, thi, size);
+
+	while (pow > 1) {
+		multiplyCal(thi, temp, result, dimension, dimension, dimension);
+		copy(temp, result, size);
+		pow--;
+	}
+
+	env->ReleaseDoubleArrayElements(r, result, 0);
+	env->ReleaseDoubleArrayElements(a, thi, JNI_ABORT);
+}
+

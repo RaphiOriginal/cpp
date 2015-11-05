@@ -30,14 +30,20 @@ public class TestMatrix {
 		
 		//start Native version
 		start = System.currentTimeMillis();
-		//Matrix result4 = powerNative(51);
+		Matrix result4 = m3.powerNative(51);
 		System.out.println("power time Native: " + (System.currentTimeMillis() - start));
 		
 		//test if equal
-		//System.out.println("Matrix is equal: " + result3.equals(result4));
+		System.out.println("Matrix is equal: " + result3.equals(result4));
 		
-		Matrix test = new Matrix(2, 2, 2);
-		test.power(2).print();
+		Matrix test = new Matrix(2, 2);
+		Matrix tr = test.power(51);
+		Matrix tr2 = test.powerNative(51);
+		
+		tr.print();
+		tr2.print();
+		
+		System.out.println(tr.equals(tr2));
 	}
 	
 	/*
@@ -50,6 +56,21 @@ public class TestMatrix {
 	 *  Calculation time Java: 10218
 		Calculation time Native: 9470
 		Matrix is equal: true
+		
+		power:
+		
+		power time Java: 360
+		power time Native: 312
+		Matrix is equal: false
+		
+		
+		[1.7375433778103547E-5, 1.2466779049856915E-5]
+		[7.1816010505833924E-6, 5.1527596182761555E-6]
+
+		[1.7375433778103564E-5, 1.2466779049856915E-5]
+		[7.181601050583402E-6, 5.152759618276157E-6]
+		
+		Sind diese Abweichungen durch das System bedingt?
 	 */
 
 }
