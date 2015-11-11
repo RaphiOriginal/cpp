@@ -46,7 +46,7 @@ JNIEXPORT void JNICALL Java_Matrix_powerC
 		pow--;
 	}
 	
-	delete[] temp*;
+	delete[] *temp;
 	env->ReleaseDoubleArrayElements(r, result, 0);
 	env->ReleaseDoubleArrayElements(a, thi, JNI_ABORT);
 }
