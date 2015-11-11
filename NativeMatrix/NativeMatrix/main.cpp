@@ -18,6 +18,12 @@ void copy(jdouble* target, jdouble* source, jint size) {
 		target[i] = source[i];
 	}
 }
+void swap(jdouble* target, jdouble* source){
+	jdouble *temp = target;
+	target = source;
+	source = temp;
+	delete[] temp;
+}
 JNIEXPORT void JNICALL Java_Matrix_multiplyC
 (JNIEnv *env, jobject, jdoubleArray a, jdoubleArray b, jdoubleArray r, jint mcolumn, jint thisrow, jint thiscolumn) {
 	jdouble *m = env->GetDoubleArrayElements(b, 0);
@@ -42,7 +48,7 @@ JNIEXPORT void JNICALL Java_Matrix_powerC
 
 	while (pow > 1) {
 		multiplyCal(thi, temp, result, dimension, dimension, dimension);
-		copy(temp, result, size);
+		swap(temp, result);
 		pow--;
 	}
 	
