@@ -1,5 +1,5 @@
 #include "Matrix.h"
-#include <algorithm>
+#include <iostream>
 
 void multiplyCal(jdouble *m, jdouble *thi, jdouble *result, jint mcolumn, jint thisrow, jint thiscolumn) {
 	int indexer1 = 0;
@@ -20,7 +20,7 @@ void multiplyCal(jdouble *m, jdouble *thi, jdouble *result, jint mcolumn, jint t
 	}
 }
 
-void copy(jdouble* target, jdouble* source, jint size) {
+void copy(jdouble*& target, jdouble*& source, jint size) {
 	for (jint i = 0; i < size; i++) {
 		target[i] = source[i];
 	}
@@ -38,7 +38,7 @@ JNIEXPORT void JNICALL Java_Matrix_multiplyC
 	env->ReleaseDoubleArrayElements(b, m, JNI_ABORT);
 }
 
-void swap(jdouble* target, jdouble* source) {
+void swap(jdouble*& target, jdouble*& source) {
 	jdouble *temp = target;
 	target = source;
 	source = temp;
@@ -49,17 +49,25 @@ JNIEXPORT void JNICALL Java_Matrix_powerC
 	jdouble *thi = env->GetDoubleArrayElements(a, 0);
 	jint size = dimension*dimension;
 	jdouble *temp = new jdouble[size];
+	jdouble * const mytemp = temp;
 	jdouble *result = env->GetDoubleArrayElements(r, 0);
 
 	copy(temp, thi, size);
 
 	while (pow > 1) {
-		swap(temp, result);
 		multiplyCal(thi, temp, result, dimension, dimension, dimension);
+		swap(temp, result);
 		pow--;
 	}
+	if (!(mytemp == temp)) {
+		swap(temp, result);
+	}
+	else {
+		//result is stored in temp, need to put it back to result!
+		copy(result, temp, size);
+	}
 
-	delete[] temp;
+	delete[] mytemp;
 	env->ReleaseDoubleArrayElements(r, result, 0);
 	env->ReleaseDoubleArrayElements(a, thi, JNI_ABORT);
 }

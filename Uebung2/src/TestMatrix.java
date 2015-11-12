@@ -38,7 +38,7 @@ public class TestMatrix {
 		
 		Matrix test = new Matrix(2, 2, 2);
 		Matrix test2 = new Matrix(2,2,2);
-		final int POW = 3;
+		final int POW = 4;
 		Matrix tr = test.power(POW);
 		Matrix tr2 = test2.powerNative(POW);
 		

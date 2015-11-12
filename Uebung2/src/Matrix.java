@@ -48,7 +48,7 @@ public class Matrix {
 		Matrix temp = new Matrix(this);
 		
 		while(k>1){
-			multiplyCal(temp, result);
+			temp.multiplyCal(this, result);
 			temp = new Matrix(result);
 			k--;
 		}
