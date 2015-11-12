@@ -36,11 +36,10 @@ public class TestMatrix {
 		//test if equal
 		System.out.println("Matrix is equal: " + result3.equals(result4));
 		
-		Matrix test = new Matrix(2, 2, 2);
-		Matrix test2 = new Matrix(2,2,2);
-		final int POW = 4;
+		Matrix test = new Matrix(2, 2);
+		final int POW = 51;
 		Matrix tr = test.power(POW);
-		Matrix tr2 = test2.powerNative(POW);
+		Matrix tr2 = test.powerNative(POW);
 		
 		tr.print();
 		tr2.print();
