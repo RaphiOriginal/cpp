@@ -58,16 +58,21 @@ public class Matrix {
 	
 	private void multiplyCal(Matrix m, Matrix res){
 		//each row from this
+		int indexer1 = 0;
+		int indexer3 = 0;
 		for(int i = 0; i < row; i++){
 			//each column from m
 			for(int j = 0; j < m.column; j++){
 				//next column in this
+				int indexer2 = 0;
 				double val = 0;
 				for(int k = 0; k < column; k++){
-					val += matrix[i*row + k] * m.matrix[k* m.column + j];
+					val += matrix[indexer1 + k] * m.matrix[indexer2 + j];
+					indexer2 += m.column;
 				}
-				res.matrix[i* m.column + j] = val;
+				res.matrix[indexer3++] = val;
 			}
+			indexer1 += row;
 		}
 	}
 	
