@@ -11,3 +11,9 @@ template<typename T> struct Minus {
 		return Left - Right;
 	}
 };
+
+template<typename T> struct Mul {
+	static T apply(double Left, T Right) {
+		return Left * Right;
+	}
+};
