@@ -19,4 +19,6 @@ int main() {
 	D.print();
 	D = k*A + B + l*C;
 	D.print();
+	D = k*A - B - 1*C;
+	D.print();
 }

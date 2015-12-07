@@ -64,6 +64,10 @@ template <typename Left, typename T> Expr<Left, Minus<T>, Array<T>, T> operator-
 	return Expr<Left, Minus<T>, Array<T>, T>(a, b);
 }
 
+template <typename Left, typename T, typename ELeft, typename EOp, typename ERight> Expr<Left, Minus<T>, Expr<ELeft, EOp, ERight, T>, T> operator-(Left a, Expr<ELeft, EOp, ERight, T> b) {
+	return Expr<Left, Minus<T>, Expr<ELeft, EOp, ERight, T>, T>(a, b);
+}
+
 template <typename T> Expr<double, Mul<T>, Array<T>, T> operator*(double a, Array<T> b) {
 	return Expr<double, Mul<T>, Array<T>, T>(a, b);
 }
