@@ -38,6 +38,15 @@ struct Array {
 		}
 	}
 
+	/*template <typename Left, typename Op, typename Right> void operator=(Expr<Left, Mul<T>, Right, T> expr) {
+		m_N = 1;
+		delete[] m_data;
+		m_data[m_N];
+		for (int i = 0; i < b.m_N; i++) {
+			m_data[0] += expr[i];
+		}
+	}*/
+
 	T operator[](int i) {
 		return m_data[i];
 	}
@@ -66,8 +75,16 @@ template <typename Left, typename T> Expr<Left, Minus<T>, Array<T>, T> operator-
 
 template <typename Left, typename T, typename ELeft, typename EOp, typename ERight> Expr<Left, Minus<T>, Expr<ELeft, EOp, ERight, T>, T> operator-(Left a, Expr<ELeft, EOp, ERight, T> b) {
 	return Expr<Left, Minus<T>, Expr<ELeft, EOp, ERight, T>, T>(a, b);
+} 
+
+template <typename T> Expr<double, MulSkalar<T>, Array<T>, T> operator*(double a, Array<T> b) {
+	return Expr<double, MulSkalar<T>, Array<T>, T>(a, b);
 }
 
-template <typename T> Expr<double, Mul<T>, Array<T>, T> operator*(double a, Array<T> b) {
-	return Expr<double, Mul<T>, Array<T>, T>(a, b);
+template <typename Left, typename T> T operator*(Left a, Expr<double, MulSkalar<T>, Array<T>, T> b) {
+	T sum = 
+	for (int i = 1; i < b.m_right.m_N; i++) {
+		m_data[0] += expr[i];
+	}
+	return Expr<Left, Mul<T>, Expr<double, MulSkalar<T>, Array<T>, T>, T>(a, b);
 }

@@ -12,8 +12,14 @@ template<typename T> struct Minus {
 	}
 };
 
-template<typename T> struct Mul {
+template<typename T> struct MulSkalar {
 	static T apply(double Left, T Right) {
+		return Left * Right;
+	}
+};
+
+template<typename T> struct Mul {
+	static T apply(T Left, T Right) {
 		return Left * Right;
 	}
 };
