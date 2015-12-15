@@ -17,9 +17,3 @@ template<typename T> struct MulSkalar {
 		return Left * Right;
 	}
 };
-
-template<typename T> struct Mul {
-	static T apply(T Left, T Right) {
-		return Left * Right;
-	}
-};

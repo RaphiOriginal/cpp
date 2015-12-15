@@ -21,6 +21,6 @@ int main() {
 	D.print();
 	D = k*A - B - 1*C;
 	D.print();
-	D = A**C;
+	D = A^C;
 	D.print();
 }

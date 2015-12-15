@@ -81,10 +81,12 @@ template <typename T> Expr<double, MulSkalar<T>, Array<T>, T> operator*(double a
 	return Expr<double, MulSkalar<T>, Array<T>, T>(a, b);
 }
 
-template <typename Left, typename T> T operator*(Left a, Expr<double, MulSkalar<T>, Array<T>, T> b) {
-	T sum = 
-	for (int i = 1; i < b.m_right.m_N; i++) {
-		m_data[0] += expr[i];
+template <typename Left, typename T> Array<T> operator^(Left a, Array<T> b) {
+	T sum = a[0] * b[0];
+	for (int i = 1; i < b.m_N; i++) {
+		sum += a[i] * b[i];
 	}
-	return Expr<Left, Mul<T>, Expr<double, MulSkalar<T>, Array<T>, T>, T>(a, b);
+	T data[] = { sum };
+	Array<T> res(data, 1)
+	return res;
 }
