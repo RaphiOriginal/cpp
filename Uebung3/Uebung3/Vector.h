@@ -17,12 +17,12 @@ template<typename Op, typename Right, typename T> struct Expr <double, Op, Right
 	T operator[](int i) { return Op::apply(m_left, m_right[i]); }
 };
 
-template<typename Left, typename Op, typename T> struct Expr <Left, Op, double, T> {
+/*template<typename Left, typename Op, typename T> struct Expr <Left, Op, double, T> {
 	Left m_left;
 	double m_right;
 	Expr(Left t1, double t2) : m_left(t1), m_right(t2) { }
 	T operator[](int i) { return Op::apply(m_left[i], m_right); }
-};
+};*/
 
 template <typename T>
 struct Array {
@@ -83,12 +83,10 @@ template <typename T> Expr<double, MulSkalar<T>, Array<T>, T> operator*(double a
 	return Expr<double, MulSkalar<T>, Array<T>, T>(a, b);
 }
 
-template <typename Left, typename T> Array<T> operator^(Left a, Array<T> b) {
+template <typename Left, typename T> T operator^(Left a, Array<T> b) {
 	T sum = a[0] * b[0];
 	for (int i = 1; i < b.m_N; i++) {
 		sum += a[i] * b[i];
 	}
-	T data[] = { sum };
-	Array<T> res(data, 1);
-	return res;
+	return sum;
 }

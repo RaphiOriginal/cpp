@@ -22,7 +22,11 @@ namespace UnitTest1
 			Array<double> D(d_data, 4);
 
 			D = A + B + C;
-			D.print();
+
+			double expectedResult[] = { 6, 3, 7, 15 };
+			for (int i = 0; i < D.m_N; i++) {
+				Assert::IsTrue(expectedResult[i] == D[i]);
+			}
 		}
 		TEST_METHOD(Substraction) {
 			double a_data[] = { 2, 3, 5, 9 };
@@ -35,7 +39,11 @@ namespace UnitTest1
 			Array<double> D(d_data, 4);
 
 			D = A - B - C;
-			D.print();
+
+			double expectedResult[] = { -2, 3, 3, 3 };
+			for (int i = 0; i < D.m_N; i++) {
+				Assert::IsTrue(expectedResult[i] == D[i]);
+			}
 		}
 		TEST_METHOD(Skalar) {
 			int k = 5;
@@ -50,11 +58,39 @@ namespace UnitTest1
 			Array<double> D(d_data, 4);
 
 			D = k*A;
-			D.print();
+			
+			double expectedResult1[] = { 10, 15, 25, 45 };
+			for (int i = 0; i < D.m_N; i++) {
+				Assert::AreEqual(expectedResult1[i], D[i], 0.001);
+			}
+
 			D = k*A + B + l*C;
-			D.print();
-			D = k*A - B - 1 * C;
-			D.print();
+			
+			double expectedResult2[] = { 20.42, 15, 31.28, 61.7 };
+			for (int i = 0; i < D.m_N; i++) {
+				Assert::AreEqual(expectedResult2[i], D[i], 0.001);
+			}
+
+			D = k*A - B;
+
+			double expectedResult3[] = { 9, 15, 25, 44 };
+			for (int i = 0; i < D.m_N; i++) {
+				Assert::AreEqual(expectedResult3[i], D[i], 0.001);
+			}
+
+			D = B - l*C;
+
+			double expectedResult4[] = { -8.42, 0, -6.28, -14.7 };
+			for (int i = 0; i < D.m_N; i++) {
+				Assert::AreEqual(expectedResult4[i], D[i], 0.001);
+			}
+
+			D = k*A - B - l * C;
+			
+			double expectedResult5[] = { -0.42, 15, 18.72, 28.3 };
+			for (int i = 0; i < D.m_N; i++) {
+				Assert::AreEqual(expectedResult5[i], D[i], 0.001);
+			}
 		}
 		TEST_METHOD(Multiplikation) {
 			double a_data[] = { 2, 3, 5, 9 };
@@ -66,8 +102,10 @@ namespace UnitTest1
 			Array<double> C(c_data, 4);
 			Array<double> D(d_data, 4);
 
-			D = A^C;
-			D.print();
+			double s = A^C; //Not Working
+
+			double expectedResult = 61;
+			Assert::AreEqual(expectedResult, s , 0.001);
 		}
 
 	};

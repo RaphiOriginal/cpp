@@ -17,10 +17,14 @@ int main() {
 	D.print();
 	D = k*A;
 	D.print();
+	D = l*A;
+	D.print();
 	D = k*A + B + l*C;
 	D.print();
-	D = k*A - B - 1*C;
+	D = B - l*C;
 	D.print();
-	D = A^C;
+	D = k*A - B - l*C;
 	D.print();
+	double t = A^C;
+	std::cout << t << std::endl;
 }
