@@ -1,4 +1,4 @@
-#include "Vector.cpp"
+#include "Vector.h"
 
 int main() {
 	int k = 5;
