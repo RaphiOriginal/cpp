@@ -24,6 +24,9 @@
     <ClInclude Include="PersistentVector.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Vectoriterator.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RandomAccessFile.cpp">

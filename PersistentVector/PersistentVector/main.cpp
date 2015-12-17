@@ -20,6 +20,13 @@ int main() {
 		cout << "100 = " << pv.back() << endl;
 		pv.pop_back();
 		cout << "99 = " << pv.back() << endl;
+
+		//const_iterator test
+		auto it = pv.cbegin(), end = it + 5;
+		while (it != end) {
+			cout << *it++ << ", ";
+		}
+		cout << endl;
 	}
 	catch (RandomAccessFile::IOException& ex) {
 		cout << "Error: " << ex.what() << endl;

@@ -1,6 +1,7 @@
 #pragma once
 #include <cassert>
 #include "RandomAccessFile.h"
+#include "Vectoriterator.hpp"
 
 template<class T> class PersistentVector {
 	RandomAccessFile m_file;
@@ -10,6 +11,7 @@ public:
 	typedef T value_type; // verwalteter Datentyp
 	typedef T& reference;
 	typedef const T& const_reference;
+	typedef ConstVectorIterator<T> const_iterator;
 
 	PersistentVector(const string& fileName) : m_file(fileName), m_size(capacity()) {}
 
@@ -44,6 +46,10 @@ public:
 		return read(pos);
 	}
 
+	//Vector_acess operator[](size_t pos) {
+
+	//}
+
 	T front() { return at(0); }
 	T back() { return at(m_size - 1); }
 
@@ -53,6 +59,13 @@ public:
 	void pop_back() {
 		if (m_size < 1) throw RandomAccessFile::IOException("bad size");
 		m_size--;
+	}
+
+	ConstVectorIterator<T> cbegin() {
+		return ConstVectorIterator<T>(this, 0);
+	}
+	ConstVectorIterator<T> cend() {
+		return ConstVectorIterator<T>(this, m_size);
 	}
 
 protected:

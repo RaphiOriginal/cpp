@@ -145,6 +145,7 @@
     <ClInclude Include="PersistentVector.hpp" />
     <ClInclude Include="RandomAccessFile.h" />
     <ClInclude Include="RandomAccessFile.hpp" />
+    <ClInclude Include="Vectoriterator.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
