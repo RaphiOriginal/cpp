@@ -23,6 +23,12 @@ int main() {
 	D.print();
 	D = B - l*C;
 	D.print();
+	D = A * 2; //Hmm
+	D.print();
+	D = 2 * (A - B); //Hmm
+	D.print();
+	D = (A - B) * 2; //Hmm
+	D.print();
 	D = k*A - B - l*C;
 	D.print();
 	double t = A^C;

@@ -17,12 +17,12 @@ template<typename Op, typename Right, typename T> struct Expr <double, Op, Right
 	T operator[](int i) { return Op::apply(m_left, m_right[i]); }
 };
 
-/*template<typename Left, typename Op, typename T> struct Expr <Left, Op, double, T> {
+template<typename Left, typename Op, typename T> struct Expr <Left, Op, double, T> {
 	Left m_left;
 	double m_right;
 	Expr(Left t1, double t2) : m_left(t1), m_right(t2) { }
 	T operator[](int i) { return Op::apply(m_left[i], m_right); }
-};*/
+};
 
 template <typename T>
 struct Array {
@@ -81,6 +81,18 @@ template <typename Left, typename T, typename ELeft, typename EOp, typename ERig
 
 template <typename T> Expr<double, MulSkalar<T>, Array<T>, T> operator*(double a, Array<T> b) {
 	return Expr<double, MulSkalar<T>, Array<T>, T>(a, b);
+}
+
+template <typename T, typename ELeft, typename EOp, typename ERight> Expr<double, MulSkalar<T>, Expr<ELeft, EOp, ERight, T>, T> operator*(double a, Expr<ELeft, EOp, ERight, T> b) {
+	return Expr<double, MulSkalar<T>, Expr<ELeft, EOp, ERight, T>, T>(a, b);
+}
+
+template <typename T> Expr<Array<T>, MulSkalar<T>, double, T> operator*(Array<T> a, double b) {
+	return Expr<Array<T>, MulSkalar<T>, double, T>(a, b);
+}
+
+template <typename T, typename ELeft, typename EOp, typename ERight> Expr<Expr<ELeft, EOp, ERight, T>, MulSkalar<T>, double, T> operator*(Expr<ELeft, EOp, ERight, T> a, double b) {
+	return Expr<Expr<ELeft, EOp, ERight, T>, MulSkalar<T>, double, T >(a, b);
 }
 
 template <typename Left, typename T> T operator^(Left a, Array<T> b) {

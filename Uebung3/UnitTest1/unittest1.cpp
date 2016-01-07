@@ -91,6 +91,27 @@ namespace UnitTest1
 			for (int i = 0; i < D.m_N; i++) {
 				Assert::AreEqual(expectedResult5[i], D[i], 0.001);
 			}
+
+			D = A * 2; //New
+			
+			double expectedResult6[] = {4.0, 6.0, 10.0, 18.0};
+			for (int i = 0; i < D.m_N; i++) {
+				Assert::AreEqual(expectedResult6[i], D[i], 0.001);
+			}
+
+			D = 2 * (A - B); //New
+
+			double expectedResult7[] = { 2.0, 6.0, 10.0, 16.0 };
+			for (int i = 0; i < D.m_N; i++) {
+				Assert::AreEqual(expectedResult7[i], D[i], 0.001);
+			}
+
+			D = (A - B) * 2; //New
+
+			double expectedResult8[] = { 2.0, 6.0, 10.0, 16.0 };
+			for (int i = 0; i < D.m_N; i++) {
+				Assert::AreEqual(expectedResult8[i], D[i], 0.001);
+			}
 		}
 		TEST_METHOD(Multiplikation) {
 			double a_data[] = { 2, 3, 5, 9 };
